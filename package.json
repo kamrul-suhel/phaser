@@ -9,14 +9,12 @@
   "author": "Kamrul",
   "license": "ISC",
   "devDependencies": {
-    "babel-preset-es2015": "^7.0.0-beta.40",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^4.1.0",
-    "gulp-babel": "^7.0.1",
+    "gulp-clean-css": "^3.9.2",
     "gulp-concat": "^2.6.1",
     "gulp-less": "^3.5.0",
     "gulp-livereload": "^3.8.1",
-    "gulp-clean-css": "^3.9.2",
     "gulp-plumber": "^1.2.0",
     "gulp-sass": "^3.1.0",
     "gulp-sourcemaps": "^2.6.4",
@@ -24,6 +22,11 @@
     "less-plugin-autoprefix": "^1.5.1"
   },
   "dependencies": {
-    "static-server": "^2.0.0"
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "gulp-babel": "^7.0.1",
+    "static-server": "^2.0.0",
+    "vue": "^2.5.16",
+    "vuetify": "^1.0.14"
   }
 }

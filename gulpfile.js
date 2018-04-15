@@ -2,37 +2,30 @@ var gulp = require('gulp');
 var uglify = require('gulp-uglify');
 var livereload = require('gulp-livereload');
 var concat = require('gulp-concat');
-var minifyCss = require('gulp-minify-css');
 var autoprefixer = require('gulp-autoprefixer');
 var plumber = require('gulp-plumber');
 var sourcemaps = require('gulp-sourcemaps');
 var sass = require('gulp-sass');
 var babel = require('gulp-babel');
 
-// Less plugins
-var less = require('gulp-less');
-var LessAutoprefix = require('less-plugin-autoprefix');
-var lessAutoprefix = new LessAutoprefix({
-	browsers: ['last 2 versions']
-});
 
 // File paths
 // Some file change
-var DIST_PATH = 'public/dist';
-var SCRIPTS_PATH = 'public/scripts/**/*.js';
-var CSS_PATH = 'public/css';
+var DIST_PATH = 'public/assets/scripts';
+var SCRIPTS_PATH = 'src/scripts/all/**/*.js';
+var CSS_PATH = 'public/assets/css';
 
 
 // Styles For SCSS
 gulp.task('pluginstyles', function () {
     console.log('starting plugin styles task');
-    return gulp.src('public/scss/plugin.scss')
+    return gulp.src('src/scss/plugin.scss')
         .pipe(plumber(function (err) {
             console.log('Styles Task Error');
             console.log(err);
             this.emit('end');
         }))
-        .pipe(sourcemaps.init())
+        // .pipe(sourcemaps.init())
         .pipe(autoprefixer())
         .pipe(sass({
             outputStyle: 'compressed'
@@ -44,7 +37,7 @@ gulp.task('pluginstyles', function () {
 // Styles For SCSS
 gulp.task('styles', function () {
 	console.log('starting styles task');
-	return gulp.src(['public/scss/styles.scss'])
+	return gulp.src(['src/scss/styles.scss'])
 		.pipe(plumber(function (err) {
 			console.log('Styles Task Error');
 			console.log(err);
@@ -66,18 +59,13 @@ gulp.task('pluginscripts', function () {
     console.log('starting plugin scripts task');
 
     return gulp.src([
-    	'node_modules/jquery/dist/jquery.js',
-    	'node_modules/tether/dist/js/tether.js',
-    	'node_modules/bootstrap/dist/js/bootstrap.js'
+    	'node_modules/vue/dist/vue.js',
+        'node_modules/vuetify/dist/vuetify.js'
 	])
         .pipe(plumber(function (err) {
             console.log('Scripts Task Error');
             console.log(err);
             this.emit('end');
-        }))
-        .pipe(sourcemaps.init())
-        .pipe(babel({
-            presets: ['es2015']
         }))
         .pipe(uglify())
         .pipe(concat('pluginscripts.js'))
@@ -125,7 +113,7 @@ gulp.task('watch', function () {
 	console.log('Starting watch task');
 	require('./server.js');
 	gulp.watch(SCRIPTS_PATH, ['scripts']);
-	gulp.watch('public/scss/styles.scss', ['styles']);
+	gulp.watch('src/scss/**/*.scss', ['styles']);
 	gulp.watch('public/**/*.html',['html_watch']);
 	livereload.listen();
 
