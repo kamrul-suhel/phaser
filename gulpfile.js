@@ -60,7 +60,8 @@ gulp.task('pluginscripts', function () {
 
     return gulp.src([
     	'node_modules/vue/dist/vue.js',
-        'node_modules/vuetify/dist/vuetify.js'
+        'node_modules/vuetify/dist/vuetify.js',
+		'node_modules/vue-router/dist/vue-router.js'
 	])
         .pipe(plumber(function (err) {
             console.log('Scripts Task Error');
@@ -69,7 +70,6 @@ gulp.task('pluginscripts', function () {
         }))
         .pipe(uglify())
         .pipe(concat('pluginscripts.js'))
-        .pipe(sourcemaps.write())
         .pipe(gulp.dest(DIST_PATH))
 });
 

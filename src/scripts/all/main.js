@@ -1,6 +1,6 @@
-
-
 Vue.use(Vuetify);
+Vue.use(VueRouter);
+
 
 new Vue({
 	el:'#mosque-project',
