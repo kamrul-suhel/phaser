@@ -24,7 +24,9 @@
   "dependencies": {
     "babel-core": "^6.26.0",
     "babel-preset-env": "^1.6.1",
+    "babel-preset-es2015": "^6.24.1",
     "gulp-babel": "^7.0.1",
+    "phaser": "3.6.0",
     "static-server": "^2.0.0",
     "vue": "^2.5.16",
     "vue-router": "^3.0.1",
